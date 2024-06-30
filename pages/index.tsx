@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [user, setUser] = useState({ id: '', email: '', name: '', username: '' });
   const [userList, setUserList] = useState([]);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch('/api/addUser', {
@@ -25,6 +25,22 @@ export default function Home() {
       console.error('Failed to add user:', error);
     }
   };
+
+  useEffect(() => {
+    // Fetch the initial user list from your database
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch('/api/getUsers');
+        if (response.ok) {
+          const users = await response.json();
+          setUserList(users);
+        }
+      } catch (error) {
+        console.error('Failed to fetch users:', error);
+      }
+    };
+    fetchUsers();
+  }, []);
 
   return (
     <div>

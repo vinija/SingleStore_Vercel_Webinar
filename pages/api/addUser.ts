@@ -1,4 +1,3 @@
-// pages/api/addUser.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { insertUser } from '../../lib/singlestore';
 
