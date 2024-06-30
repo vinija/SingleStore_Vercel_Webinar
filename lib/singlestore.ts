@@ -22,14 +22,14 @@ export async function createTable() {
   try {
     await singleStoreApi.rows({
       queryInput: {
-        database: 'db_vinija_70211', // replace with your actual database name
+        database: process.env.SINGLESTORE_DATABASE_NAME!, // ensure your environment variable is correct
         sql: query,
       }
     });
     console.log('Table created successfully');
   } catch (err) {
     console.error('Error creating table:', err);
-    throw new Error('Error creating table');
+    throw new Error('Error creating table: ' + err.message);
   }
 }
 
