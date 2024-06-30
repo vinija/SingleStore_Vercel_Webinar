@@ -15,6 +15,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./", // Add this line
     "paths": {
       "@/components/*": ["components/*"],
       "@/lib/*": ["lib/*"]
