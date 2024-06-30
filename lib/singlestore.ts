@@ -22,7 +22,7 @@ export async function createTable() {
   try {
     await singleStoreApi.rows({
       queryInput: {
-        database: 'your_database_name', // replace with your actual database name
+        database: 'db_vinija_70211', // replace with your actual database name
         sql: query,
       }
     });
@@ -43,7 +43,7 @@ export async function insertUser(id: number, email: string, name: string, userna
   try {
     await singleStoreApi.rows({
       queryInput: {
-        database: 'your_database_name', // replace with your actual database name
+        database: 'db_vinija_70211', // replace with your actual database name
         sql: query,
         parameters: [id, email, name, username]
       }
@@ -62,7 +62,7 @@ export async function getUsers() {
   try {
     const result = await singleStoreApi.rows({
       queryInput: {
-        database: 'your_database_name', // replace with your actual database name
+        database: 'db_vinija_70211', // replace with your actual database name
         sql: query,
       }
     });
