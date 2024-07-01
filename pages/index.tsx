@@ -22,15 +22,15 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>SingleStore, Vercel, Next.js Demo</title>
-        <meta name="description" content="A sleek demo for SingleStore, Vercel, and Next.js" />
+        <meta name="description" content="Demo for SingleStore, Vercel, and Next.js" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <header className={styles.header}>
-        <img src="/singlestore-logo.png" alt="SingleStore Logo" className={styles.logo} />
-        <img src="/vercel-logo.png" alt="Vercel Logo" className={styles.logo} />
-        <img src="/nextjs-logo.png" alt="Next.js Logo" className={styles.logo} />
-        <p className={styles.date}>July 2nd</p>
+        <img src="/singlestore.png" alt="SingleStore Logo" className={styles.logo} />
+        <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+        <img src="/next.svg" alt="Next.js Logo" className={styles.logo} />
+        <p className={styles.date}>July 2nd Webinar with  Vinija Jain</p>
       </header>
 
       <main className={styles.main}>
