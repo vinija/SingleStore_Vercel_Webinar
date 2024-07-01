@@ -8,12 +8,6 @@ BasicAuth.password = process.env.SINGLESTORE_WORKSPACE_PASSWORD!;
 singleStoreInstance.basePath = 'https://' + process.env.SINGLESTORE_WORKSPACE_HOST!;
 const singleStoreApi = new HttpApi();
 
-// Log the environment variables for debugging
-console.log('SINGLESTORE_WORKSPACE_USERNAME:', process.env.SINGLESTORE_WORKSPACE_USERNAME);
-console.log('SINGLESTORE_WORKSPACE_PASSWORD:', process.env.SINGLESTORE_WORKSPACE_PASSWORD);
-console.log('SINGLESTORE_WORKSPACE_HOST:', process.env.SINGLESTORE_WORKSPACE_HOST);
-console.log('SINGLESTORE_DATABASE_NAME:', process.env.SINGLESTORE_DATABASE_NAME);
-
 // Function to create the users table
 export async function createTable() {
   const query = `
@@ -26,19 +20,21 @@ export async function createTable() {
   `;
 
   try {
+    console.log('Executing query:', query);
     const response = await singleStoreApi.rows({
       queryInput: {
-        database: process.env.SINGLESTORE_DATABASE_NAME!, // make sure this is the correct variable name
+        database: process.env.SINGLESTORE_DATABASE_NAME!,
         sql: query,
       }
     });
-    console.log('API Response:', response);
+    console.log('Query response:', response);
     console.log('Table created successfully');
   } catch (err) {
     console.error('Error creating table:', err);
-    throw new Error('Error creating table: ' + err.message);
+    throw new Error('Error creating table');
   }
 }
+
 
 // Function to insert a user into the users table
 export async function insertUser(id: number, email: string, name: string, username: string) {
