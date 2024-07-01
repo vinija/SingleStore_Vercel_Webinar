@@ -23,7 +23,6 @@ export default function Home() {
       <Head>
         <title>SingleStore, Vercel, Next.js Demo</title>
         <meta name="description" content="Demo for SingleStore, Vercel, and Next.js" />
-        <meta name="subtitle" content="July 2nd Webinar with Vinija Jain" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
