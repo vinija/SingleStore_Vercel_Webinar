@@ -9,3 +9,23 @@ body, html {
 * {
   box-sizing: border-box;
 }
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header img {
+  height: 50px;
+  margin: 0 20px;
+}
+
+header p {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0;
+}
