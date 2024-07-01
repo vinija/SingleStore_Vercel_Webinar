@@ -24,7 +24,7 @@
   text-align: center;
 }
 
-form {
+.form {
   display: flex;
   flex-direction: column;
   margin: 2rem 0;

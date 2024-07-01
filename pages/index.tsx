@@ -27,15 +27,15 @@ export default function Home() {
       </Head>
 
       <header>
-        <img src="/singlestore-logo.png" alt="SingleStore Logo" />
-        <img src="/vercel-logo.png" alt="Vercel Logo" />
-        <img src="/nextjs-logo.png" alt="Next.js Logo" />
-        <p>July 2nd</p>
+        <img src="/singlestore.png" alt="SingleStore Logo" />
+        <img src="/vercel.svg" alt="Vercel Logo" />
+        <img src="/next.svg" alt="Next.js Logo" />
+        <p>July 2nd Webinar with Vinija Jain</p>
       </header>
 
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to the Demo</h1>
-        <form onSubmit={addRow}>
+        <form className={styles.form} onSubmit={addRow}>
           <input type="text" name="name" placeholder="Name" required />
           <input type="email" name="email" placeholder="Email" required />
           <button type="submit">Add Row</button>
