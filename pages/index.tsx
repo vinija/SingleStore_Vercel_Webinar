@@ -3,16 +3,28 @@ import Head from 'next/head'
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
+// Mock AI classification function
+const classifyName = async (name) => {
+  // This is a mock function. Replace with actual AI API call.
+  const commonNames = ['John', 'Jane', 'Michael', 'Sarah']
+  return commonNames.includes(name) ? 'Common' : 'Uncommon'
+}
+
 export default function Home() {
   const [rows, setRows] = useState([])
 
-  const addRow = (event) => {
+  const addRow = async (event) => {
     event.preventDefault()
     const formData = new FormData(event.target)
+    const name = formData.get('name')
+    const email = formData.get('email')
+    const classification = await classifyName(name)
+
     const newRow = {
       id: rows.length + 1,
-      name: formData.get('name'),
-      email: formData.get('email'),
+      name,
+      email,
+      classification
     }
     setRows([...rows, newRow])
     event.target.reset()
@@ -30,8 +42,6 @@ export default function Home() {
         <img src="/singlestore.png" alt="SingleStore Logo" className={styles.logo} />
         <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         <img src="/next.svg" alt="Next.js Logo" className={styles.logo} />
-
-
       </header>
 
       <main className={styles.main}>
@@ -48,6 +58,7 @@ export default function Home() {
               <th>ID</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Classification</th>
             </tr>
           </thead>
           <tbody>
@@ -56,6 +67,7 @@ export default function Home() {
                 <td>{row.id}</td>
                 <td>{row.name}</td>
                 <td>{row.email}</td>
+                <td>{row.classification}</td>
               </tr>
             ))}
           </tbody>
