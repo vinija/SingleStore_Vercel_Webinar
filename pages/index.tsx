@@ -20,10 +20,12 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <Image src="/singlestore.png" alt="SingleStore Logo" width={150} height={50} />
-        <Image src="/vercel.svg" alt="Vercel Logo" width={150} height={50} />
-        <Image src="/next.svg" alt="Next.js Logo" width={150} height={50} />
-        <h1>July 2nd</h1>
+        <div className={styles.logos}>
+          <Image src="/singlestore-logo.png" alt="SingleStore Logo" width={150} height={50} />
+          <Image src="/vercel-logo.png" alt="Vercel Logo" width={150} height={50} />
+          <Image src="/nextjs-logo.png" alt="Next.js Logo" width={150} height={50} />
+        </div>
+        <h1 className={styles.date}>July 2nd</h1>
       </header>
       <main className={styles.main}>
         <h1 className={styles.title}>User Information</h1>
@@ -36,6 +38,7 @@ const Home = () => {
               value={formData.email}
               onChange={handleChange}
               required
+              className={styles.input}
             />
           </div>
           <div className={styles.formGroup}>
@@ -46,6 +49,7 @@ const Home = () => {
               value={formData.name}
               onChange={handleChange}
               required
+              className={styles.input}
             />
           </div>
           <div className={styles.formGroup}>
@@ -56,6 +60,7 @@ const Home = () => {
               value={formData.username}
               onChange={handleChange}
               required
+              className={styles.input}
             />
           </div>
           <button className={styles.submitButton} type="submit">Submit</button>
