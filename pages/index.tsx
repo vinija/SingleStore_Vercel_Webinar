@@ -1,63 +1,78 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-export default function Home() {
-  const [user, setUser] = useState({ id: '', email: '', name: '', username: '' });
-  const [userList, setUserList] = useState([]);
+const Home = () => {
+  const [formData, setFormData] = useState({ email: '', name: '', username: '' });
+  const [users, setUsers] = useState([]);
 
-  const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const response = await fetch('/api/addUser', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(user),
-      });
-      if (response.ok) {
-        const addedUser = await response.json();
-        setUserList([...userList, addedUser]);
-        setUser({ id: '', email: '', name: '', username: '' }); // Clear form after submission
-      }
-    } catch (error) {
-      console.error('Failed to add user:', error);
-    }
+    setUsers([...users, formData]);
+    setFormData({ email: '', name: '', username: '' });
   };
-
-  useEffect(() => {
-    // Fetch the initial user list from your database
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch('/api/getUsers');
-        if (response.ok) {
-          const users = await response.json();
-          setUserList(users);
-        }
-      } catch (error) {
-        console.error('Failed to fetch users:', error);
-      }
-    };
-    fetchUsers();
-  }, []);
 
   return (
     <div>
-      <h1>Add User</h1>
+      <h1>User Information</h1>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="id" placeholder="ID" value={user.id} onChange={handleChange} />
-        <input type="email" name="email" placeholder="Email" value={user.email} onChange={handleChange} />
-        <input type="text" name="name" placeholder="Name" value={user.name} onChange={handleChange} />
-        <input type="text" name="username" placeholder="Username" value={user.username} onChange={handleChange} />
+        <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Username:</label>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <button type="submit">Submit</button>
       </form>
-      <h2>User List</h2>
-      <ul>
-        {userList.map((u, index) => (
-          <li key={index}>{u.name} - {u.email}</li>
-        ))}
-      </ul>
+
+      <h2>Users</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user, index) => (
+            <tr key={index}>
+              <td>{user.email}</td>
+              <td>{user.name}</td>
+              <td>{user.username}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-}
+};
+
+export default Home;
