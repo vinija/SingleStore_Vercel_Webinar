@@ -1,6 +1,5 @@
 import { ApiClient, HttpApi } from '@singlestore/http-client';
 
-// SingleStore configuration
 const singleStoreInstance = ApiClient.instance;
 const BasicAuth = singleStoreInstance.authentications['BasicAuth'];
 BasicAuth.username = process.env.SINGLESTORE_WORKSPACE_USERNAME!;
@@ -8,7 +7,6 @@ BasicAuth.password = process.env.SINGLESTORE_WORKSPACE_PASSWORD!;
 singleStoreInstance.basePath = 'https://' + process.env.SINGLESTORE_WORKSPACE_HOST!;
 const singleStoreApi = new HttpApi();
 
-// Function to create the users table
 export async function createTable() {
   const query = `
     CREATE TABLE IF NOT EXISTS users (
@@ -20,21 +18,18 @@ export async function createTable() {
   `;
 
   try {
-    console.log('Executing query:', query);
-    const response = await singleStoreApi.rows({
+    await singleStoreApi.rows({
       queryInput: {
         database: process.env.SINGLESTORE_DATABASE_NAME!,
         sql: query,
       }
     });
-    console.log('Query response:', response);
     console.log('Table created successfully');
   } catch (err) {
     console.error('Error creating table:', err);
     throw new Error('Error creating table');
   }
 }
-
 
 // Function to insert a user into the users table
 export async function insertUser(id: number, email: string, name: string, username: string) {
