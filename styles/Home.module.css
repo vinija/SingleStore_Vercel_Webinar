@@ -8,6 +8,22 @@
   align-items: center;
 }
 
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  max-height: 50px;
+}
+
+.date {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
 .main {
   padding: 5rem 0;
   flex: 1;
@@ -30,13 +46,13 @@
   margin: 2rem 0;
 }
 
-input {
+.input {
   margin: 0.5rem 0;
   padding: 0.5rem;
   font-size: 1rem;
 }
 
-button {
+.button {
   padding: 0.75rem;
   font-size: 1rem;
   background-color: #0070f3;
@@ -46,7 +62,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.button:hover {
   background-color: #005bb5;
 }
 

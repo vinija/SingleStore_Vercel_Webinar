@@ -26,19 +26,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
-        <img src="/singlestore.png" alt="SingleStore Logo" />
-        <img src="/vercel.svg" alt="Vercel Logo" />
-        <img src="/next.svg" alt="Next.js Logo" />
-        <p>July 2nd Webinar with Vinija Jain</p>
+      <header className={styles.header}>
+        <img src="/singlestore-logo.png" alt="SingleStore Logo" className={styles.logo} />
+        <img src="/vercel-logo.png" alt="Vercel Logo" className={styles.logo} />
+        <img src="/nextjs-logo.png" alt="Next.js Logo" className={styles.logo} />
+        <p className={styles.date}>July 2nd</p>
       </header>
 
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to the Demo</h1>
         <form className={styles.form} onSubmit={addRow}>
-          <input type="text" name="name" placeholder="Name" required />
-          <input type="email" name="email" placeholder="Email" required />
-          <button type="submit">Add Row</button>
+          <input type="text" name="name" placeholder="Name" required className={styles.input} />
+          <input type="email" name="email" placeholder="Email" required className={styles.input} />
+          <button type="submit" className={styles.button}>Add Row</button>
         </form>
 
         <table className={styles.table}>
