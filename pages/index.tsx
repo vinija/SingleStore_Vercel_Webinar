@@ -23,6 +23,7 @@ export default function Home() {
       <Head>
         <title>SingleStore, Vercel, Next.js Demo</title>
         <meta name="description" content="Demo for SingleStore, Vercel, and Next.js" />
+        <h2 className={styles.subtitle}>July 2nd Webinar with  Vinija Jain</h2>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -30,7 +31,8 @@ export default function Home() {
         <img src="/singlestore.png" alt="SingleStore Logo" className={styles.logo} />
         <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         <img src="/next.svg" alt="Next.js Logo" className={styles.logo} />
-        <p className={styles.date}>July 2nd Webinar with  Vinija Jain</p>
+
+
       </header>
 
       <main className={styles.main}>
