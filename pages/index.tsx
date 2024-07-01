@@ -21,9 +21,9 @@ const Home = () => {
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.logos}>
-          <Image src="/singlestore-logo.png" alt="SingleStore Logo" width={150} height={50} />
-          <Image src="/vercel-logo.png" alt="Vercel Logo" width={150} height={50} />
-          <Image src="/nextjs-logo.png" alt="Next.js Logo" width={150} height={50} />
+          <Image src="/singlestore.png" alt="SingleStore Logo" width={150} height={50} />
+          <Image src="/vercel.svg" alt="Vercel Logo" width={150} height={50} />
+          <Image src="/next.svg" alt="Next.js Logo" width={150} height={50} />
         </div>
         <h1 className={styles.date}>July 2nd</h1>
       </header>
