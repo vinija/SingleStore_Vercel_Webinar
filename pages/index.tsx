@@ -3,13 +3,21 @@ import Head from 'next/head'
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
-// Mock AI classification function
+// Function to classify name by calling the Genderize.io API
 const classifyName = async (name) => {
-  // This is a mock function. Replace with actual AI API call.
-  const commonNames = ['John', 'Jane', 'Michael', 'Sarah']
-  return commonNames.includes(name) ? 'Common' : 'Uncommon'
+  const apiKey = 'your_api_key_here'; // Replace with your Genderize.io API key
+  try {
+    const response = await fetch(`https://api.genderize.io?name=${name}&apikey=${apiKey}`)
+    if (!response.ok) {
+      throw new Error('Network response was not ok')
+    }
+    const data = await response.json()
+    return data.gender ? data.gender : 'Unknown'
+  } catch (error) {
+    console.error('Error classifying name:', error)
+    return 'Unknown'
+  }
 }
-
 export default function Home() {
   const [rows, setRows] = useState([])
 
